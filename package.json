@@ -2,8 +2,9 @@
   "name": "chess-api-server",
   "version": "1.0.0",
   "description": "Four Seasons Chess API Backend",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -12,8 +13,7 @@
   },
   "keywords": [
     "chess",
-    "four",
-    "seasons"
+    "four seasons"
   ],
   "author": "Mahammad Ismayilzada",
   "license": "ISC",
@@ -22,6 +22,10 @@
   },
   "homepage": "https://github.com/asalahli/chess-api-server#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "debug": "^2.6.1",
+    "express": "^4.15.2",
+    "node-uuid": "^1.4.7",
+    "socket.io": "^1.7.3",
+    "sqlite": "^2.3.0"
   }
 }
