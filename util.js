@@ -6,6 +6,7 @@
 
 let uuid = require('node-uuid');
 let moment = require('moment');
+let debug = require('debug')('app:server');
 
 let util = {
     // Normalize a port into a number, string, or false.
@@ -31,6 +32,10 @@ let util = {
 
     getNow: function () {
         return moment().format();
+    },
+
+    error: function (err) {
+        debug('ERROR: %o', err);
     }
 };
 

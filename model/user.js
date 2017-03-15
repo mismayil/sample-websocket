@@ -7,41 +7,26 @@
 let Sequelize = require('sequelize');
 let Database = require('../db/database');
 
-function addUser(user, success, error) {
-    this.create({
-        username: user.username,
-        firstname: user.firstname,
-        lastname: user.lastname
-    }).then(success).catch(error);
-}
-
-function getUsers(success, error) {
-    this.all().then(success).catch(error);
-}
-
 const MODEL_NAME = 'user';
 
 const ATTRIBUTES = {
     username: {
         type: Sequelize.STRING,
         field: 'username',
-        allowNull: false,
+        allowNull: false
     },
-    firstName: {
+    firstname: {
         type: Sequelize.STRING,
-        field: 'first_name'
+        field: 'firstname'
     },
-    lastName: {
+    lastname: {
         type: Sequelize.STRING,
-        field: 'last_name'
+        field: 'lastname'
     }
 };
 
 const OPTIONS = {
-    classMethods: {
-        addUser: addUser,
-        getUsers: getUsers
-    },
+    classMethods: {},
     instanceMethods: {}
 };
 

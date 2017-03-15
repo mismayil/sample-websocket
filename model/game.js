@@ -7,17 +7,8 @@
 let Sequelize = require('sequelize');
 let Database = require('../db/database');
 
-function addGame(name, success, error) {
-    this.create({
-        name: name
-    }).then(success).catch(error);
-}
-
-function getGames(success, error) {
-    this.all().then(success).catch(error);
-}
-
 const MODEL_NAME = 'game';
+
 const ATTRIBUTES = {
     name: {
         type: Sequelize.STRING,
@@ -26,10 +17,7 @@ const ATTRIBUTES = {
     }
 };
 const OPTIONS = {
-    classMethods: {
-        addGame: addGame,
-        getGames: getGames
-    },
+    classMethods: {},
     instanceMethods: {}
 };
 
