@@ -7,6 +7,10 @@
 let Sequelize = require('sequelize');
 let config = require('../config');
 
+function init() {
+    return this.sync();
+}
+
 let Database = new Sequelize(config.DATABASE_NAME, null, null, {
     host: 'localhost',
     dialect: 'sqlite',
@@ -14,7 +18,9 @@ let Database = new Sequelize(config.DATABASE_NAME, null, null, {
     define: {
         underscored: true,
         freezeTableName: true,
-        classMethods: {},
+        classMethods: {
+            init: init
+        },
         instanceMethods: {}
     }
 });
