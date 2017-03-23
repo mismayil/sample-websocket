@@ -11,10 +11,10 @@ function init() {
     return this.sync();
 }
 
-let Database = new Sequelize(config.DATABASE_NAME, null, null, {
-    host: 'localhost',
-    dialect: 'sqlite',
-    storage: config.DATABASE_FILE,
+let Database = new Sequelize(config.DB_NAME, null, null, {
+    host: config.HOST,
+    dialect: config.DB_SYSTEM,
+    storage: config.DB_FILE,
     define: {
         underscored: true,
         freezeTableName: true,

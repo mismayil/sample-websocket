@@ -6,6 +6,7 @@
 
 let Sequelize = require('sequelize');
 let Database = require('../db/database');
+let util = require('../util');
 
 const MODEL_NAME = 'user';
 
@@ -22,6 +23,11 @@ const ATTRIBUTES = {
     lastname: {
         type: Sequelize.STRING,
         field: 'lastname'
+    },
+    usertype: {
+        type: Sequelize.STRING,
+        field: 'usertype',
+        defaultValue: util.player.AI
     }
 };
 

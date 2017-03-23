@@ -5,9 +5,11 @@
 'use strict';
 
 let config = {
+    HOST: 'localhost',
     PORT: '8080',
-    DATABASE_NAME: 'chessdb',
-    DATABASE_FILE: 'db/chess.db'
+    DB_SYSTEM: 'sqlite',
+    DB_NAME: 'chessdb',
+    DB_FILE: 'db/chess.db'
 };
 
 module.exports = config;
