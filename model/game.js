@@ -19,7 +19,8 @@ const ATTRIBUTES = {
     },
     room: {
         type: Sequelize.UUID,
-        field: 'room'
+        field: 'room',
+        defaultValue: Sequelize.UUIDV4
     },
     turn: {
         type: Sequelize.INTEGER,
@@ -38,9 +39,10 @@ const OPTIONS = {
 
 let Game = Database.define(MODEL_NAME, ATTRIBUTES, OPTIONS);
 
-User.hasOne(Game, {as: 'greenPlayer', foreignKey: 'greenId'});
-User.hasOne(Game, {as: 'redPlayer', foreignKey: 'redId'});
-User.hasOne(Game, {as: 'blackPlayer', foreignKey: 'blackId'});
-User.hasOne(Game, {as: 'whitePlayer', foreignKey: 'whiteId'});
+Game.belongsTo(User, {as: 'GreenPlayer', foreignKey: 'greenId'});
+Game.belongsTo(User, {as: 'RedPlayer', foreignKey: 'redId'});
+Game.belongsTo(User, {as: 'BlackPlayer', foreignKey: 'blackId'});
+Game.belongsTo(User, {as: 'WhitePlayer', foreignKey: 'whiteId'});
+User.belongsTo(Game);
 
 module.exports = Game;

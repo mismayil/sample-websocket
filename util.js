@@ -73,7 +73,9 @@ let util = {
     message: {
         USER_NOT_FOUND: 'User not found',
         USERNAME_TAKEN: 'Username already taken',
-        GAME_NOT_FOUND: 'Game not found'
+        GAME_NOT_FOUND: 'Game not found',
+        GAME_NOT_OPEN:  'Game is not open',
+        WRONG_GAME:     'Wrong game accessed'
     }
 };
 

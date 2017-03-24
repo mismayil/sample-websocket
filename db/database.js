@@ -16,7 +16,6 @@ let Database = new Sequelize(config.DB_NAME, null, null, {
     dialect: config.DB_SYSTEM,
     storage: config.DB_FILE,
     define: {
-        underscored: true,
         freezeTableName: true,
         classMethods: {
             init: init

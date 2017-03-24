@@ -7,11 +7,19 @@
 let debug = require('debug')('app:server');
 let Game = require('../model/game');
 let User = require('../model/user');
-let Lobby = require('../model/lobby');
 
-Game.init().then(
-    User.init().then(
-        Lobby.init().then(function () {
-            debug('Database successfully initialized!');
-        })));
+let models = [Game, User];
+
+function dbinit(models) {
+    if (models.length > 0) {
+        let model = models.pop();
+        model.init().then(function () {
+            dbinit(models);
+        });
+    } else {
+        debug('Database successfully initialized!');
+    }
+}
+
+dbinit(models);
 

@@ -14,15 +14,18 @@ const ATTRIBUTES = {
     username: {
         type: Sequelize.STRING,
         field: 'username',
-        allowNull: false
+        allowNull: false,
+        defaultValue: 'alfonso'
     },
     firstname: {
         type: Sequelize.STRING,
-        field: 'firstname'
+        field: 'firstname',
+        defaultValue: 'Alfonso'
     },
     lastname: {
         type: Sequelize.STRING,
-        field: 'lastname'
+        field: 'lastname',
+        defaultValue: 'X'
     },
     usertype: {
         type: Sequelize.STRING,
