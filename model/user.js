@@ -5,10 +5,9 @@
 'use strict';
 
 let Sequelize = require('sequelize');
-let Database = require('../db/database');
 let util = require('../util');
 
-const MODEL_NAME = 'user';
+const MODEL_NAME = 'User';
 
 const ATTRIBUTES = {
     username: {
@@ -35,10 +34,20 @@ const ATTRIBUTES = {
 };
 
 const OPTIONS = {
-    classMethods: {},
+    constraints: false,
+    classMethods: {
+        associate: associate
+    },
     instanceMethods: {}
 };
 
-let User = Database.define(MODEL_NAME, ATTRIBUTES, OPTIONS);
+function associate(models) {
+    models.User.belongsTo(models.Game);
+}
 
-module.exports = User;
+function init(sequelize) {
+    let User = sequelize.define(MODEL_NAME, ATTRIBUTES, OPTIONS);
+    return User;
+}
+
+module.exports = init;

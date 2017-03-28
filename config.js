@@ -9,7 +9,9 @@ let config = {
     PORT: '8080',
     DB_SYSTEM: 'sqlite',
     DB_NAME: 'chessdb',
-    DB_FILE: 'db/chess.db'
+    DB_FILE: 'db/chess.db',
+    USERNAME: null,
+    PASSWORD: null
 };
 
 module.exports = config;

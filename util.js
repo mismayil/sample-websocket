@@ -55,6 +55,8 @@ let util = {
         ADD_USER:       'ADD_USER',
         GET_GAME:       'GET_GAME',
         GET_USER:       'GET_USER',
+        REMOVE_GAME:    'REMOVE_GAME',
+        REMOVE_USER:    'REMOVE_USER',
         GET_CUR_GAME:   'GET_CUR_GAME',
         GET_GAMES:      'GET_GAMES',
         GET_OPEN_GAMES: 'GET_OPEN_GAMES',

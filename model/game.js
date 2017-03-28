@@ -4,12 +4,11 @@
 
 'use strict';
 
+let debug = require('debug')('app:server');
 let Sequelize = require('sequelize');
-let Database = require('../db/database');
-let User = require('./user');
 let util = require('../util');
 
-const MODEL_NAME = 'game';
+const MODEL_NAME = 'Game';
 
 const ATTRIBUTES = {
     name: {
@@ -30,19 +29,31 @@ const ATTRIBUTES = {
     board: {
         type: Sequelize.STRING,
         field: 'board'
+    },
+    numPlayers: {
+        type: Sequelize.INTEGER,
+        field: 'numPlayers',
+        defaultValue: 1
     }
 };
+
 const OPTIONS = {
-    classMethods: {},
+    classMethods: {
+        associate: associate
+    },
     instanceMethods: {}
 };
 
-let Game = Database.define(MODEL_NAME, ATTRIBUTES, OPTIONS);
+function associate(models) {
+    models.Game.belongsTo(models.User, {as: 'GreenPlayer', foreignKey: 'greenId'});
+    models.Game.belongsTo(models.User, {as: 'RedPlayer', foreignKey: 'redId'});
+    models.Game.belongsTo(models.User, {as: 'BlackPlayer', foreignKey: 'blackId'});
+    models.Game.belongsTo(models.User, {as: 'WhitePlayer', foreignKey: 'whiteId'});
+}
 
-Game.belongsTo(User, {as: 'GreenPlayer', foreignKey: 'greenId'});
-Game.belongsTo(User, {as: 'RedPlayer', foreignKey: 'redId'});
-Game.belongsTo(User, {as: 'BlackPlayer', foreignKey: 'blackId'});
-Game.belongsTo(User, {as: 'WhitePlayer', foreignKey: 'whiteId'});
-User.belongsTo(Game);
+function init(sequelize) {
+    let Game = sequelize.define(MODEL_NAME, ATTRIBUTES, OPTIONS);
+    return Game;
+}
 
-module.exports = Game;
+module.exports = init;
