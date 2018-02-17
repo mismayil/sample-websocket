@@ -1,2 +1,1 @@
-# chess-api-server
-Four Seasons API backend server
+# Sample websocket app with Sequelize
